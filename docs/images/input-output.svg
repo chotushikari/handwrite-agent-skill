@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">What you provide and what you get</title>
+  <desc id="desc">An assignment and handwriting reference on the left flow into a handwritten notebook page on the right.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8f6ff"/>
+      <stop offset="1" stop-color="#eef7ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#27324a" flood-opacity=".15"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="420" rx="26" fill="url(#background)"/>
+  <text x="72" y="54" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#27324a">WHAT YOU PROVIDE</text>
+  <text x="858" y="54" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#27324a">WHAT YOU GET</text>
+  <g filter="url(#shadow)" transform="translate(78 85) rotate(-5 140 130)">
+    <rect width="250" height="270" rx="10" fill="#fff"/>
+    <rect width="250" height="46" rx="10" fill="#e8e4ff"/>
+    <circle cx="23" cy="23" r="6" fill="#6554c0"/>
+    <circle cx="45" cy="23" r="6" fill="#6554c0" opacity=".55"/>
+    <circle cx="67" cy="23" r="6" fill="#6554c0" opacity=".3"/>
+    <text x="24" y="84" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#27324a">assignment.pdf</text>
+    <path d="M25 112h196M25 142h170M25 172h190M25 202h150" stroke="#a9b5ca" stroke-width="4" stroke-linecap="round"/>
+    <path d="M25 236h84" stroke="#6554c0" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)" transform="translate(350 115) rotate(7 80 105)">
+    <rect width="170" height="210" rx="8" fill="#fffdf7"/>
+    <path d="M22 48h126M22 78h126M22 108h126M22 138h126M22 168h126" stroke="#bdd5e9" stroke-width="3"/>
+    <path d="M28 37c28-14 54 8 94-5M28 67c26-10 48 10 103-5M28 98c29-12 57 9 102-5M28 128c27-11 51 9 94-4" fill="none" stroke="#3678ba" stroke-width="4" stroke-linecap="round"/>
+    <text x="22" y="194" font-family="Arial,sans-serif" font-size="12" fill="#3678ba">reference photo</text>
+  </g>
+  <path d="M575 214h85" stroke="#6554c0" stroke-width="6" stroke-linecap="round"/>
+  <path d="m640 199 22 15-22 15" fill="none" stroke="#6554c0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g filter="url(#shadow)" transform="translate(790 78) rotate(4 145 145)">
+    <rect width="290" height="300" rx="9" fill="#fffdf7"/>
+    <path d="M35 72h220M35 112h220M35 152h220M35 192h220M35 232h220M35 272h220" stroke="#c3d9ec" stroke-width="3"/>
+    <text x="38" y="48" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#245e98">HANDWRITTEN PAGE 1</text>
+    <path d="M41 94c43-18 83 11 151-7M41 134c37-13 74 11 174-7M41 174c48-16 84 11 191-7M41 214c41-13 75 11 164-6M41 254c48-15 93 9 184-6" fill="none" stroke="#3678ba" stroke-width="4" stroke-linecap="round"/>
+    <path d="M198 178c20-25 49-18 58 8 7 22-12 40-32 40-25 0-43-25-26-48zM211 173v-20M246 197h24" fill="none" stroke="#3678ba" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
