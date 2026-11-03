@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 330" role="img" aria-labelledby="title desc">
+  <title id="title">Handwrite: from source material to notebook pages</title>
+  <desc id="desc">A notebook page, a planning card, and a rendered handwritten page connected in a warm editorial illustration.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8f6ff"/>
+      <stop offset="1" stop-color="#eef7ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#27324a" flood-opacity=".14"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="330" rx="28" fill="url(#bg)"/>
+  <circle cx="1050" cy="58" r="95" fill="#e1dcff" opacity=".65"/>
+  <circle cx="92" cy="280" r="100" fill="#d9f4ed" opacity=".8"/>
+  <path d="M75 106 C150 45 235 58 292 112" fill="none" stroke="#7b67ee" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 16"/>
+  <g filter="url(#shadow)" transform="translate(95 61) rotate(-7 120 115)">
+    <rect width="220" height="230" rx="9" fill="#fffdf7"/>
+    <path d="M32 48h156M32 76h156M32 104h156M32 132h156M32 160h110M32 188h142" stroke="#b8d4ed" stroke-width="3"/>
+    <path d="M39 37c37-20 72 8 103-8M40 95c35-13 68 13 113-7M41 151c36-16 58 11 101-3" fill="none" stroke="#3678ba" stroke-width="4" stroke-linecap="round"/>
+    <path d="M43 213c32-11 60 8 94-4" fill="none" stroke="#3678ba" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(430 73)">
+    <rect width="280" height="184" rx="18" fill="#fff" stroke="#d7dced" stroke-width="2"/>
+    <rect width="280" height="45" rx="18" fill="#6554c0"/>
+    <circle cx="27" cy="23" r="6" fill="#fff" opacity=".8"/>
+    <circle cx="49" cy="23" r="6" fill="#fff" opacity=".55"/>
+    <circle cx="71" cy="23" r="6" fill="#fff" opacity=".35"/>
+    <text x="24" y="82" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#27324a">PAGE PLAN</text>
+    <text x="24" y="112" font-family="Arial,sans-serif" font-size="14" fill="#536078">01  Audit the source</text>
+    <text x="24" y="138" font-family="Arial,sans-serif" font-size="14" fill="#536078">02  Split readable pages</text>
+    <text x="24" y="164" font-family="Arial,sans-serif" font-size="14" fill="#536078">03  Check every equation</text>
+  </g>
+  <g filter="url(#shadow)" transform="translate(820 48) rotate(5 125 120)">
+    <rect width="240" height="240" rx="9" fill="#fffdf7"/>
+    <path d="M28 52h184M28 84h184M28 116h184M28 148h184M28 180h184M28 212h184" stroke="#c3d9ec" stroke-width="3"/>
+    <text x="30" y="35" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#245e98">HANDWRITE</text>
+    <path d="M35 72c42-19 71 10 119-8M36 103c34-12 63 12 135-6M35 135c40-14 79 12 145-8M35 167c31-13 73 11 118-5M35 199c38-12 70 8 134-5" fill="none" stroke="#3678ba" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <path d="M333 165h70M730 165h65" stroke="#6554c0" stroke-width="5" stroke-linecap="round"/>
+  <path d="m391 155 17 10-17 10M782 155l17 10-17 10" fill="none" stroke="#6554c0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 620" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrative handwritten notebook page</title>
+  <desc id="desc">A stylized notebook page with blue lines and handwritten-style strokes.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#27324a" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="520" height="620" rx="24" fill="#f3f5fb"/>
+  <g filter="url(#shadow)" transform="translate(100 35) rotate(-3 160 270)">
+    <rect width="320" height="540" rx="5" fill="#fffdf7"/>
+    <path d="M42 70h236M42 110h236M42 150h236M42 190h236M42 230h236M42 270h236M42 310h236M42 350h236M42 390h236M42 430h236M42 470h236" stroke="#c7dced" stroke-width="3"/>
+    <text x="44" y="47" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#245e98">TOPIC: CELL STRUCTURE</text>
+    <path d="M48 94c41-19 73 12 128-7M48 134c30-13 62 12 159-7M48 174c48-16 75 13 185-8M48 214c37-12 66 13 133-5M48 254c50-17 92 10 165-7M48 294c34-13 77 12 141-5M48 334c51-16 92 10 180-8M48 374c39-13 70 12 152-6M48 414c46-16 88 9 166-6M48 454c34-12 73 11 143-5M48 494c51-15 98 10 168-6" fill="none" stroke="#3678ba" stroke-width="4" stroke-linecap="round"/>
+    <path d="M208 284c22-28 55-18 65 11 8 25-13 45-35 45-28 0-48-28-30-56zM222 278v-25M263 306h29M215 330l-18 20" fill="none" stroke="#3678ba" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
