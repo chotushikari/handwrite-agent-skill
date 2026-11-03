@@ -1,0 +1,62 @@
+version: 1
+cases:
+  - id: short-two-topic-assignment
+    prompt: >
+      Turn the supplied two-topic assignment into handwritten notebook pages.
+      Audit the complete source, plan pages, and render one page at a time.
+    checks:
+      - all source topics are represented
+      - page plan is reasonable for the content density
+      - blue-ink student handwriting is used
+      - the full page is visible and readable
+      - no invented student details appear
+
+  - id: continuation-without-header
+    prompt: >
+      Continue the assignment from the previous page. Do not repeat the title,
+      student name, roll number, or course header.
+    checks:
+      - continuation begins with the next planned topic
+      - no repeated header appears
+      - handwriting and paper style remain consistent
+
+  - id: equation-heavy-page
+    prompt: >
+      Render the supplied equation-heavy section. Keep every symbol and
+      subscript correct. Split into another page if the equation and explanation
+      cannot fit legibly.
+    checks:
+      - equations are copied accurately
+      - labels are legible
+      - content is not shrunk to force a fit
+      - page is split if needed
+
+  - id: controlled-irregularity
+    prompt: >
+      Make the handwriting less uniform and more like ordinary student writing.
+      Keep it readable and use blue ink only.
+    checks:
+      - letter sizes and spacing vary naturally
+      - baselines are subtly uneven
+      - underlines and bullets are imperfect
+      - no deliberate illegibility is introduced
+      - no coloured highlights appear
+
+  - id: missing-image-renderer
+    prompt: >
+      Create handwritten notebook pages in an environment where no image
+      generation tool or provider is connected.
+    checks:
+      - agent does not claim images were generated
+      - agent returns page plan and page-specific prompts
+      - limitation is explained clearly
+
+  - id: source-coverage-audit
+    prompt: >
+      The source contains six numbered questions with several subtopics.
+      Produce a coverage map and verify all subtopics are assigned to pages.
+    checks:
+      - every numbered question is mapped
+      - subtopics are not silently dropped
+      - diagrams and tables are included when required
+      - final report accurately states completion
