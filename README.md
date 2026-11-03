@@ -1,169 +1,140 @@
 <div align="center">
 
-<img src="docs/images/handwrite-hero.svg" alt="Handwrite workflow from source material to notebook pages" width="820">
-
 # Handwrite
 
-### Turn assignments, notes, and PDFs into handwritten notebook-page images.
+**Turn assignments, notes, and PDFs into handwritten notebook pages.**
 
-[![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-6554c0?style=for-the-badge)](https://agentskills.io/)
-[![CI](https://img.shields.io/github/actions/workflow/status/chotushikari/handwrite-agent-skill/validate.yml?branch=main&style=for-the-badge&label=checks)](https://github.com/chotushikari/handwrite-agent-skill/actions)
-[![License](https://img.shields.io/badge/license-Apache--2.0-2ea44f?style=for-the-badge)](LICENSE)
+Portable Agent Skill · source-first workflow · optional handwriting reference
+
+[![CI](https://img.shields.io/github/actions/workflow/status/chotushikari/handwrite-agent-skill/validate.yml?branch=main&label=CI)](https://github.com/chotushikari/handwrite-agent-skill/actions)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 </div>
 
-Handwrite is a portable Agent Skill that reads source material, plans realistic pages, follows an optional handwriting reference, and produces one notebook-page image per page.
+Handwrite tells a compatible agent how to read an assignment, plan its pages, preserve the content, and render each page as a readable notebook image.
+
+It is a **skill, not an image generator**. Rendering requires a native image tool or a configured image provider.
 
 ## What you provide → what you get
 
-<div align="center">
+<table>
+<tr>
+<td width="50%" align="center"><strong>1. Provide a reference</strong></td>
+<td width="50%" align="center"><strong>2. Get notebook pages</strong></td>
+</tr>
+<tr>
+<td align="center"><img src="docs/images/handwritten-reference-example.png" alt="Handwriting reference example" width="92%"></td>
+<td align="center"><img src="docs/images/handwritten-page-example.png" alt="Handwritten notebook page example" width="92%"></td>
+</tr>
+<tr>
+<td align="center">Your assignment plus an optional handwriting sample</td>
+<td align="center">One portrait page image at a time</td>
+</tr>
+</table>
 
-<img src="docs/images/handwritten-reference-example.png" alt="Handwriting reference example supplied by a user" width="43%">
-&nbsp;&nbsp;
-<img src="docs/images/handwritten-page-example.png" alt="Handwritten notebook page example produced by the workflow" width="43%">
+> These images demonstrate the reference-to-output workflow. They contain different subject matter and are not a same-content before/after pair.
 
-<br>
-<sub><strong>What you provide:</strong> a handwriting sample to guide the style &nbsp; → &nbsp; <strong>What you get:</strong> a handwritten notebook page.</sub>
-
-</div>
-
-> These examples demonstrate the reference-to-output workflow. They contain different subject matter and are not a same-content before/after pair.
-
-### You provide
-
-- An assignment, notes, PDF, DOCX, screenshot, photo, or pasted text.
-- Optionally, one to three clear photos of your own handwriting, like the example above.
-- Any page-count, formatting, equation, diagram, or question-order requirements.
-
-### You get
-
-- A source coverage checklist and page plan.
-- One portrait notebook-page image per page.
-- Consistent student-style handwriting across continuation pages.
-- Technical content, equations, tables, and diagrams preserved as closely as the renderer allows.
-- A content and legibility check after rendering.
-
-## Use it in four steps
+## How to use it
 
 ### 1. Copy the skill
-
-Clone this repository:
 
 ```bash
 git clone https://github.com/chotushikari/handwrite-agent-skill.git
 ```
 
-Copy the complete `skills/handwrite-assignment/` folder, including `SKILL.md`, `references/`, and `assets/`, into your tool's Agent Skills directory:
+Copy this complete folder into the Agent Skills directory used by your tool:
 
-| Tool | Directory |
+```text
+skills/handwrite-assignment/
+├── SKILL.md
+├── references/
+└── assets/
+```
+
+| Tool | Typical location |
 | --- | --- |
 | Claude Code | `~/.claude/skills/handwrite-assignment/` |
 | OpenAI Codex | `~/.agents/skills/handwrite-assignment/` |
 | VS Code / GitHub Copilot | `.github/skills/handwrite-assignment/` or `.agents/skills/handwrite-assignment/` |
-| Other agents | Use the directory documented by that tool |
+| Other tools | Use that tool's documented Agent Skills location |
 
-### 2. Configure image generation
+Do not copy only `SKILL.md`; the references and assets are part of the skill.
 
-Use either:
-
-- the host's native image-generation tool; or
-- the included [`mcp-image-provider/`](mcp-image-provider/) with a compatible image API.
-
-The skill does not install or provide an image model. Without an image renderer, it returns the page plan and render-ready prompts instead of images.
-
-### 3. Attach files and start
+### 2. Add the source and reference
 
 Attach:
 
-1. The source assignment or notes.
-2. An optional handwriting reference photo.
+- the assignment, notes, PDF, DOCX, screenshot, photo, or pasted text;
+- optionally, one to three clear photos of the handwriting style you want to follow.
 
-Then send:
+The source provides the content. The handwriting photo provides style only. Do not include private information you do not want sent to the configured image provider.
+
+### 3. Add an image renderer
+
+Choose one:
+
+- a native image-generation tool provided by your agent host; or
+- the optional [`mcp-image-provider/`](mcp-image-provider/) bridge.
+
+Without a renderer, the skill can still audit the source, make the page plan, and return exact render prompts. It cannot create image files by itself.
+
+### 4. Start with this prompt
 
 ```text
 Use the handwrite-assignment skill.
 Read the complete source before generating anything.
-Create a coverage checklist and a page plan first.
+Create a coverage checklist and page plan first.
 Use my attached notebook photo only as a handwriting-style reference.
 Preserve the source meaning, equations, diagrams, tables, and question order.
 Create one portrait A4-like notebook page per image.
 Keep the handwriting natural and readable.
-Generate page 1 first so I can review the style.
+Generate page 1 first so I can review it.
 ```
 
-### 4. Review and continue
+### 5. Review before continuing
 
-Review page 1 before generating the remaining pages:
+Use the same chat to control the next pages:
 
-| Instruction | Use it to |
+| Say this | Result |
 | --- | --- |
-| `Make it more irregular` | Add variation in size, spacing, slant, and baseline |
-| `Make it neater` | Improve readability without making it typeset |
-| `Fix this page: ...` | Correct a specific error |
+| `Make it more irregular` | Add natural variation while keeping the text readable |
+| `Make it neater` | Improve spacing and legibility |
+| `Fix this page: ...` | Correct a specified error |
 | `Continue with page 2` | Generate the next page without repeating the title block |
-| `Check content` | Compare the rendered pages with the source |
+| `Check content` | Compare the pages with the original source |
 
-Save the page images. Combine them into a PDF if a single submission file is required.
+Save the images. Combine them into a PDF if you need one submission file.
 
-## Rendering workflow
+## What the skill enforces
 
-<div align="center">
+- Read the complete source before rendering.
+- Track every question, sub-question, equation, diagram, and constraint.
+- Split dense content across pages instead of shrinking it.
+- Keep continuation pages consistent without repeating the header.
+- Preserve technical content; never invent missing facts or student details.
+- Inspect for omissions, clipping, unreadable text, and incorrect labels.
+- State clearly when no renderer is available.
 
-<img src="docs/images/workflow.svg" alt="Five-step Handwrite workflow" width="900">
+## Default output
 
-</div>
-
-1. **Audit** the complete source.
-2. **Plan** page breaks for readable content.
-3. **Compose** exact page text before rendering.
-4. **Render** one portrait page at a time.
-5. **Inspect** coverage, equations, labels, clipping, and legibility.
-
-## Default page style
-
-| Detail | Default |
-| --- | --- |
-| Ink | Blue ballpoint |
-| Handwriting | Readable, casual, mildly irregular |
-| Page | Portrait A4-like layout with modest whitespace |
-| Paper | Off-white or white with subtle texture |
-| Diagrams | Simple, hand-drawn, blue ink |
-| Colour | Blue ink only; no coloured highlights |
-| Continuation pages | No repeated title or student details |
-
-<div align="center">
-
-<img src="docs/images/notebook-preview.svg" alt="Illustrative notebook-page output" width="360">
-
-<br>
-<sub>Illustrative output style. The repository does not include a fixed handwriting font.</sub>
-
-</div>
-
-## Requirements and limitations
-
-- An Agent Skills-compatible host.
-- An image-generation tool or configured image provider for actual page images.
-- Source material supplied by the user.
-- A handwriting reference is optional; the default style is used when none is provided.
-
-Handwrite does not invent missing facts, student details, equations, citations, or assignment requirements. It must not claim images were generated when no renderer ran. Inspect generated pages before submitting them because image models can corrupt text, equations, and labels.
+- Portrait A4-like page
+- Blue ballpoint ink
+- Readable student-style handwriting
+- Slightly irregular letters, spacing, and baselines
+- Simple blue-ink diagrams and tables
+- No coloured highlights unless requested
 
 ## Repository
 
 ```text
-skills/handwrite-assignment/
-├── SKILL.md                         # Core workflow
-├── references/                      # Planning, style, rendering, and QA guidance
-└── assets/page-brief-template.md    # Page prompt template
-
-mcp-image-provider/                  # Optional MCP image bridge
-docs/                                # Rendering and portability guides
-evals/                              # Scenario-based evaluation cases
-scripts/validate_skill.py            # Local validator
+skills/handwrite-assignment/   Core skill instructions and references
+mcp-image-provider/            Optional MCP image-rendering bridge
+docs/                          Rendering and portability guides
+evals/                         Scenario-based evaluation cases
+scripts/validate_skill.py      Local validator
 ```
 
-Validate the skill locally:
+Run the local validation:
 
 ```bash
 python scripts/validate_skill.py
@@ -171,11 +142,18 @@ python scripts/validate_skill.py
 
 ## Troubleshooting
 
-- **Skill not recognised:** confirm `handwrite-assignment/SKILL.md` exists directly inside the copied folder, then reload the host.
-- **No images generated:** configure a native image tool or the optional MCP provider.
-- **Writing is too perfect:** attach a clearer handwriting reference and request more variation.
-- **Page is crowded:** ask for more pages rather than smaller writing.
+- **Skill not recognised:** verify that `handwrite-assignment/SKILL.md` exists directly inside the copied folder, then reload the host.
+- **No image files:** configure a native renderer or the optional MCP provider.
+- **Pages are crowded:** ask for more pages; do not ask the agent to make the writing smaller.
+- **Writing is too uniform:** attach a clearer handwriting reference and request more natural variation.
+
+## Documentation
+
+- [Core skill](skills/handwrite-assignment/SKILL.md)
+- [Image rendering](docs/IMAGE_RENDERING.md)
+- [Portability](docs/PORTABILITY.md)
+- [MCP image provider](mcp-image-provider/README.md)
 
 ## License
 
-Apache-2.0. See [`LICENSE`](LICENSE).
+Apache-2.0. See [LICENSE](LICENSE).
