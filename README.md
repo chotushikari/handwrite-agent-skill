@@ -99,6 +99,20 @@ cp -R skills/handwrite-assignment ~/.agents/skills/
 </details>
 
 <details>
+<summary><strong>VS Code / GitHub Copilot</strong></summary>
+
+Use the Agent Skills folder supported by your VS Code setup. Common workspace locations are:
+
+```text
+.github/skills/handwrite-assignment/
+.agents/skills/handwrite-assignment/
+```
+
+Keep the complete `handwrite-assignment` folder, including `SKILL.md`, `references/`, and `assets/`.
+
+</details>
+
+<details>
 <summary><strong>Gemini CLI or another compatible agent</strong></summary>
 
 Use the host's documented Agent Skills directory or import flow, then copy:
@@ -120,15 +134,38 @@ For MCP setup, see [`mcp-image-provider/README.md`](mcp-image-provider/README.md
 
 ### 3. Start an assignment
 
-After installation, give your agent a source file and a request like this:
+Start a chat and attach:
+
+- **Your assignment:** PDF, DOCX, screenshots, photos, or pasted text.
+- **Your handwriting reference:** ideally one to three clear photos of your own notebook writing.
+
+The reference image guides handwriting style; the assignment provides the content. You can skip the reference and use the default student-style handwriting.
+
+Then give your agent a request like this:
 
 ```text
-Use Handwrite to turn this assignment into handwritten notebook pages.
-Read the entire source first and create a topic coverage checklist.
-Split the material into readable portrait pages and generate each page in order.
-Use casual blue-ballpoint student handwriting with natural irregularity.
-Do not repeat the title or student details on continuation pages.
+Use the handwrite-assignment skill.
+Read the complete assignment and make a page plan before generating.
+Use my attached notebook photo only as a handwriting-style reference.
+Preserve the assignment's meaning, equations, diagrams, tables, and question order.
+Create one portrait A4-like notebook page per image.
+Keep the handwriting natural and slightly irregular, but readable.
+Generate page 1 first so I can review the style before continuing.
 ```
+
+### 4. Review and continue
+
+Review the first generated page before asking for the rest. Continue in the same chat with instructions such as:
+
+| Say this | To do this |
+| --- | --- |
+| `Make it more irregular` | Add natural variation to letter size, spacing, slant, and baseline. |
+| `Make it neater` | Improve readability and spacing without making it typeset. |
+| `Fix this page: ...` | Correct a specific mistake while preserving the established style. |
+| `Continue with page 2` | Generate the next page without repeating the first-page heading. |
+| `Check content` | Review the output against the original source. |
+
+Save the generated images. If you need one submission file, combine the page images into a PDF.
 
 ## Conversation controls
 
@@ -158,6 +195,22 @@ If no renderer is available, the correct behavior is still useful and explicit:
 
 It must never claim that an image was generated when no renderer ran.
 
+## Requirements
+
+- An AI tool that can load Agent Skills.
+- An image-generation tool available in that AI tool, or a separately configured image provider.
+- Your source assignment and, optionally, a handwriting reference photo.
+
+Installing the skill does not install or unlock image generation. If the host has no image-generation capability, Handwrite can still prepare the page plan and image prompts, but it cannot render page images itself. The optional [`mcp-image-provider/`](mcp-image-provider/) integration is available for compatible image APIs.
+
+## Install from Git
+
+```bash
+git clone https://github.com/chotushikari/handwrite-agent-skill.git
+```
+
+Then copy [`skills/handwrite-assignment/`](skills/handwrite-assignment/) to the skill directory for your AI tool.
+
 ## Repository map
 
 ```text
@@ -185,6 +238,13 @@ python scripts/validate_skill.py
 ```
 
 The repository also includes scenario-based evaluations for source coverage, continuation pages, visual style, and missing-renderer behavior. CI runs the validator on pushes and pull requests.
+
+## Troubleshooting
+
+- **The skill is not recognised:** confirm the folder is named `handwrite-assignment` and that `SKILL.md` is directly inside it; restart or reload the agent if required.
+- **No images are generated:** enable or connect an image-generation tool, or configure the optional image provider.
+- **The writing looks too perfect:** attach a clearer handwriting reference and ask for more variation in letter size, spacing, slant, and baseline.
+- **The page is crowded:** ask the agent to split the content across more pages rather than shrinking the writing.
 
 ## Safety and privacy
 
