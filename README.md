@@ -18,17 +18,21 @@ Handwrite is a portable Agent Skill that reads source material, plans realistic 
 
 <div align="center">
 
-<img src="docs/images/input-output.svg" alt="Input assignment and handwriting reference produce handwritten notebook pages" width="900">
+<img src="docs/images/handwritten-reference-example.png" alt="Handwriting reference example supplied by a user" width="43%">
+&nbsp;&nbsp;
+<img src="docs/images/handwritten-page-example.png" alt="Handwritten notebook page example produced by the workflow" width="43%">
 
 <br>
-<sub>The visual is illustrative. Add your own source file and handwriting reference when using the skill.</sub>
+<sub><strong>What you provide:</strong> a handwriting sample to guide the style &nbsp; → &nbsp; <strong>What you get:</strong> a handwritten notebook page.</sub>
 
 </div>
+
+> These examples demonstrate the reference-to-output workflow. They contain different subject matter and are not a same-content before/after pair.
 
 ### You provide
 
 - An assignment, notes, PDF, DOCX, screenshot, photo, or pasted text.
-- Optionally, one to three clear photos of your own handwriting.
+- Optionally, one to three clear photos of your own handwriting, like the example above.
 - Any page-count, formatting, equation, diagram, or question-order requirements.
 
 ### You get
